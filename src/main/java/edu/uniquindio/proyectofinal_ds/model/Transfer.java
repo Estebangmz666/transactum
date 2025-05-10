@@ -25,4 +25,8 @@ public class Transfer extends Transaction {
         }
         return false;
     }
+
+    public UUID getDestinationAccountId() {
+        return destinationAccountId;
+    }
 }

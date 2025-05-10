@@ -6,8 +6,8 @@ import lombok.Getter;
 
 @Getter
 public class Account {
-    private final UUID id;
-    private final UUID userId;
+    private UUID id;
+    private UUID userId;
     private AccountType accountType;
     private BigDecimal balance;
 

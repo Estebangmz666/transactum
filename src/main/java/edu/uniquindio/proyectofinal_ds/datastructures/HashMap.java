@@ -1,6 +1,7 @@
 package edu.uniquindio.proyectofinal_ds.datastructures;
 
 public class HashMap<K, V> implements Map<K,V>{  
+
     private static class Entry<K, V> {
         final K key;
         V value;
@@ -122,5 +123,17 @@ public class HashMap<K, V> implements Map<K,V>{
     public void clear() {
         buckets = new Entry[INITIAL_CAPACITY];
         size = 0;
+    }
+
+    public LinkedList<V> values() {
+        LinkedList<V> valueList = new LinkedList<>();
+        for (Entry<K, V> bucket : buckets) {
+            Entry<K, V> current = bucket;
+            while (current != null) {
+                valueList.add(current.value);
+                current = current.next;
+            }
+        }
+        return valueList;
     }
 }

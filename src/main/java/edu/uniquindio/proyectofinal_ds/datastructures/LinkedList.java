@@ -1,6 +1,8 @@
 package edu.uniquindio.proyectofinal_ds.datastructures;
 
-public class LinkedList<T> implements List<T> {
+import java.util.Iterator;
+
+public class LinkedList<T> implements List<T>, Iterable<T> {
 
     private static class Node<T> {
         T data;
@@ -130,5 +132,22 @@ public class LinkedList<T> implements List<T> {
 
     private void checkIndex(int index) {
         if (index < 0 || index >= size) throw new IndexOutOfBoundsException();
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            private Node<T> current = head;
+            @Override
+            public boolean hasNext() {
+                return current != null;
+            }
+            @Override
+            public T next() {
+                T data = current.data;
+                current = current.next;
+                return data;
+            }
+        };
     }
 }
