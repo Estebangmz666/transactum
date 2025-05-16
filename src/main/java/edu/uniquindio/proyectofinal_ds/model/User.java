@@ -13,7 +13,7 @@ public class User {
     private String cellphone;
     private final HashMap<UUID, Account> accounts;
     private int points = 0;
-    private UserRank rank = UserRank.BEGINNER;
+    private UserRank rank = UserRank.BRONZE;
 
     public User(String fullName, String email, String address, String cellphone) {
         this.id = UUID.randomUUID();
@@ -58,17 +58,15 @@ public class User {
     }
 
     private void updateRank() {
-        if (points >= 2000) {
-            rank = UserRank.LEGENDARY;
-        } else if (points >= 1000) {
-            rank = UserRank.EXPERT;
-        } else if (points >= 500) {
-            rank = UserRank.ADVANCED;
-        } else if (points >= 100) {
-            rank = UserRank.INTERMEDIATE;
-        } else {
-            rank = UserRank.BEGINNER;
-        }
+        if (points >= 5000) {
+            rank = UserRank.PLATINUM;
+        } else if (points >= 1001) {
+            rank = UserRank.GOLD;
+        } else if (points >= 501) {
+            rank = UserRank.SILVER;
+        } else if (points >= 0) {
+            rank = UserRank.BRONZE;
+        }    
     }
 
     public UserRank getRank() {
@@ -77,11 +75,10 @@ public class User {
 
     public String getRankDisplayName() {
         return switch (rank) {
-            case BEGINNER -> "Beginner";
-            case INTERMEDIATE -> "Intermediate";
-            case ADVANCED -> "Advanced";
-            case EXPERT -> "Expert";
-            case LEGENDARY -> "Legendary";
+            case PLATINUM -> "Platino";
+            case GOLD -> "Oro";
+            case SILVER -> "Plata";
+            case BRONZE -> "Bronce";
         };
     }
 
