@@ -1,6 +1,8 @@
 package edu.uniquindio.proyectofinal_ds.model;
 
 import edu.uniquindio.proyectofinal_ds.datastructures.HashMap;
+
+import java.math.BigDecimal;
 import java.util.UUID;
 import lombok.Getter;
 
@@ -80,6 +82,14 @@ public class User {
             case SILVER -> "Plata";
             case BRONZE -> "Bronce";
         };
+    }
+
+    public BigDecimal getAccumulatedBalance() {
+        BigDecimal total = BigDecimal.ZERO;
+        for (UUID id : accounts.keySet()) {
+            total = total.add(accounts.get(id).getBalance());
+        }
+        return total;
     }
 
     @Override

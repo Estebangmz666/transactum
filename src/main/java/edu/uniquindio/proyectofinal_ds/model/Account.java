@@ -40,6 +40,14 @@ public class Account {
         }
     }
 
+    public void setBalance(BigDecimal balance) {
+        if (balance.compareTo(BigDecimal.ZERO) >= 0) {
+            this.balance = balance;
+        } else {
+            throw new IllegalArgumentException("El saldo no puede ser negativo.");
+        }
+    }
+
     public String getFormattedBalance() {
         return "$" + balance.toPlainString();
     }

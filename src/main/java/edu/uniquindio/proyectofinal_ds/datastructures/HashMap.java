@@ -136,4 +136,17 @@ public class HashMap<K, V> implements Map<K,V>{
         }
         return valueList;
     }
+
+    public LinkedList<K> keySet() {
+        LinkedList<K> keys = new LinkedList<>();
+        for (Entry<K, V> bucket : buckets) {
+            Entry<K, V> current = bucket;
+            while (current != null) {
+                keys.add(current.key);
+                current = current.next;
+            }
+        }
+        return keys;
+    }
+
 }
