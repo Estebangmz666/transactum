@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.uniquindio.proyectofinal_ds.controller.DepositDashboardController">
+   <children>
+      <!-- Background Gradient -->
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="600.0" width="900.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.2" green="0.4" blue="0.8" opacity="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.1" green="0.2" blue="0.5" opacity="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      
+      <!-- Left Side - Decorative -->
+      <VBox alignment="CENTER" layoutX="50.0" layoutY="80.0" prefHeight="440.0" prefWidth="350.0" spacing="30.0">
+         <children>
+            <!-- Deposit Icon -->
+            <VBox alignment="CENTER" spacing="15.0">
+               <children>
+                  <!-- Main Icon Circle -->
+                  <Circle fill="WHITE" opacity="0.9" radius="50.0" />
+                  <!-- Dollar Sign -->
+                  <VBox alignment="CENTER" layoutX="75.0" layoutY="30.0" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="30.0">
+                     <children>
+                        <Label text="$" textFill="#667eea">
+                           <font>
+                              <Font name="System Bold" size="48.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <Label text="DEPÓSITO BANCARIO" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            
+            <!-- Information Text -->
+            <VBox alignment="CENTER" spacing="20.0">
+               <children>
+                  <Label text="Deposita fondos fácilmente" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <VBox alignment="CENTER" spacing="10.0">
+                     <children>
+                        <Label text="✓ Transacciones instantáneas" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label text="✓ Proceso 100% seguro" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label text="✓ Disponible 24/7" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      
+      <!-- Right Side - Deposit Form -->
+      <VBox alignment="CENTER" layoutX="450.0" layoutY="50.0" prefHeight="500.0" prefWidth="400.0" spacing="30.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+         <padding>
+            <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+         </padding>
+         <effect>
+            <DropShadow blurType="GAUSSIAN" color="#00000040" offsetX="0.0" offsetY="10.0" radius="20.0" />
+         </effect>
+         
+         <children>
+            <!-- Form Title -->
+            <VBox alignment="CENTER" spacing="10.0">
+               <children>
+                  <Label text="Realizar Depósito" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="28.0" />
+                     </font>
+                  </Label>
+                  <Label text="Ingresa el monto que deseas depositar" textAlignment="CENTER" textFill="#666666">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            
+            <!-- Account Info Card -->
+            <VBox spacing="15.0" style="-fx-background-color: #f8f9fa; -fx-background-radius: 12; -fx-padding: 20;">
+               <children>
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                     <children>
+                        <Circle fill="#28a745" radius="8.0" />
+                        <Label text="Cuenta Activa" textFill="#28a745">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <VBox spacing="8.0">
+                     <children>
+                        <Label text="Saldo Actual" textFill="#666666">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Label>
+                        <Label text="$0.00" textFill="#333333">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            
+            <!-- Amount Field -->
+            <VBox spacing="12.0">
+               <children>
+                  <Label text="Monto a Depositar" textFill="#333333">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER_LEFT" spacing="0.0" style="-fx-background-color: #f8f9fa; -fx-border-color: #e9ecef; -fx-border-radius: 8; -fx-background-radius: 8;">
+                     <children>
+                        <Label text="$" textFill="#666666" style="-fx-padding: 0 0 0 15;">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="tfAmountToDeposit" prefHeight="50.0" promptText="0.00" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-padding: 12 15 12 5;">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            
+            <!-- Message Label -->
+            <Label fx:id="lbMessage" alignment="CENTER" prefHeight="25.0" textFill="#dc3545" wrapText="true">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            
+            <!-- Action Buttons -->
+            <VBox spacing="15.0">
+               <children>
+                  <!-- Deposit Button -->
+                  <Button fx:id="btnDeposit" mnemonicParsing="false" onAction="#btnDepositClicked" prefHeight="55.0" prefWidth="320.0" style="-fx-background-color: linear-gradient(to right, #28a745 0%, #20c997 100%); -fx-text-fill: white; -fx-background-radius: 25; -fx-cursor: hand;" text="CONFIRMAR DEPÓSITO">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <effect>
+                        <DropShadow blurType="GAUSSIAN" color="#28a74540" offsetY="5.0" radius="10.0" />
+                     </effect>
+                  </Button>
+                  
+                  <!-- Cancel Button -->
+                  <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#btnCancelClicked" prefHeight="45.0" prefWidth="320.0" style="-fx-background-color: transparent; -fx-text-fill: #666666; -fx-border-color: #e9ecef; -fx-border-radius: 22; -fx-background-radius: 22; -fx-cursor: hand;" text="CANCELAR">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      
+      <!-- Security Footer -->
+      <VBox alignment="CENTER_LEFT" layoutX="50.0" layoutY="540.0" spacing="5.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="8.0">
+               <children>
+                  <Rectangle arcHeight="3.0" arcWidth="3.0" fill="#28a745" height="16.0" opacity="0.8" width="16.0" />
+                  <Label text="Transacción segura y cifrada" textFill="WHITE" opacity="0.8">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Label text="Todos los depósitos son procesados inmediatamente" textFill="WHITE" opacity="0.6">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      
+      <!-- Quick Amount Suggestions (Optional Enhancement) -->
+      <VBox alignment="CENTER" layoutX="450.0" layoutY="420.0" prefWidth="400.0" spacing="10.0">
+         <children>
+            <Label text="Montos sugeridos:" textFill="#999999" textAlignment="CENTER">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER" spacing="10.0">
+               <children>
+                  <Button mnemonicParsing="false" style="-fx-background-color: #f8f9fa; -fx-text-fill: #667eea; -fx-border-color: #e9ecef; -fx-border-radius: 15; -fx-background-radius: 15; -fx-cursor: hand; -fx-padding: 8 15 8 15;" text="$50">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" style="-fx-background-color: #f8f9fa; -fx-text-fill: #667eea; -fx-border-color: #e9ecef; -fx-border-radius: 15; -fx-background-radius: 15; -fx-cursor: hand; -fx-padding: 8 15 8 15;" text="$100">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" style="-fx-background-color: #f8f9fa; -fx-text-fill: #667eea; -fx-border-color: #e9ecef; -fx-border-radius: 15; -fx-background-radius: 15; -fx-cursor: hand; -fx-padding: 8 15 8 15;" text="$500">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" style="-fx-background-color: #f8f9fa; -fx-text-fill: #667eea; -fx-border-color: #e9ecef; -fx-border-radius: 15; -fx-background-radius: 15; -fx-cursor: hand; -fx-padding: 8 15 8 15;" text="$1000">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

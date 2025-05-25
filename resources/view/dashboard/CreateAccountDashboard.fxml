@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.uniquindio.proyectofinal_ds.controller.CreateAccountDashboardController">
+   <children>
+      <!-- Background Gradient -->
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="600.0" width="900.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.2" green="0.4" blue="0.8" opacity="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.1" green="0.2" blue="0.5" opacity="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      
+      <!-- Left Side - Decorative -->
+      <VBox alignment="CENTER" layoutX="50.0" layoutY="70.0" prefHeight="460.0" prefWidth="350.0" spacing="35.0">
+         <children>
+            <!-- Account Creation Icon -->
+            <VBox alignment="CENTER" spacing="20.0">
+               <children>
+                  <!-- Main Icon Background -->
+                  <Circle fill="WHITE" opacity="0.9" radius="55.0" />
+                  <!-- Plus Icon -->
+                  <VBox alignment="CENTER" layoutX="70.0" layoutY="25.0" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="25.0">
+                     <children>
+                        <Label text="+" textFill="#667eea">
+                           <font>
+                              <Font name="System Bold" size="60.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <Label text="NUEVA CUENTA" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="26.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            
+            <!-- Information Text -->
+            <VBox alignment="CENTER" spacing="25.0">
+               <children>
+                  <Label text="Crea tu cuenta bancaria" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  
+                  <!-- Benefits List -->
+                  <VBox alignment="CENTER_LEFT" spacing="12.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" spacing="15.0">
+                           <children>
+                              <Circle fill="#28a745" radius="6.0" />
+                              <Label text="Sin costos de apertura" textFill="WHITE">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="15.0">
+                           <children>
+                              <Circle fill="#28a745" radius="6.0" />
+                              <Label text="Activación inmediata" textFill="WHITE">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="15.0">
+                           <children>
+                              <Circle fill="#28a745" radius="6.0" />
+                              <Label text="Múltiples tipos disponibles" textFill="WHITE">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="15.0">
+                           <children>
+                              <Circle fill="#28a745" radius="6.0" />
+                              <Label text="Gestión 100% digital" textFill="WHITE">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      
+      <!-- Right Side - Account Creation Form -->
+      <VBox alignment="CENTER" layoutX="450.0" layoutY="50.0" prefHeight="500.0" prefWidth="400.0" spacing="35.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+         <padding>
+            <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+         </padding>
+         <effect>
+            <DropShadow blurType="GAUSSIAN" color="#00000040" offsetX="0.0" offsetY="10.0" radius="20.0" />
+         </effect>
+         
+         <children>
+            <!-- Form Title -->
+            <VBox alignment="CENTER" spacing="12.0">
+               <children>
+                  <Label text="Crear Nueva Cuenta" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="28.0" />
+                     </font>
+                  </Label>
+                  <Label text="Selecciona el tipo de cuenta que deseas crear" textAlignment="CENTER" textFill="#666666" wrapText="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            
+            <!-- Account Type Selection -->
+            <VBox spacing="15.0">
+               <children>
+                  <Label text="Tipo de Cuenta" textFill="#333333">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  
+                  <!-- Info Card -->
+                  <VBox spacing="12.0" style="-fx-background-color: #f8f9fa; -fx-background-radius: 12; -fx-padding: 20;">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                           <children>
+                              <Rectangle arcHeight="3.0" arcWidth="3.0" fill="#17a2b8" height="20.0" width="20.0" />
+                              <Label text="Información de Cuentas" textFill="#17a2b8">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Label text="Elige el tipo de cuenta que mejor se adapte a tus necesidades financieras. Podrás crear múltiples cuentas posteriormente." textFill="#666666" wrapText="true">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  
+                  <!-- ComboBox -->
+                  <ComboBox fx:id="cbAccountType" prefHeight="50.0" prefWidth="320.0" promptText="Selecciona el tipo de cuenta" style="-fx-background-color: #f8f9fa; -fx-border-color: #e9ecef; -fx-border-radius: 12; -fx-background-radius: 12; -fx-padding: 12;">
+                     <styleClass>
+                        <String fx:value="combo-box" />
+                     </styleClass>
+                  </ComboBox>
+               </children>
+            </VBox>
+            
+            <!-- Message Label -->
+            <Label fx:id="lblMessage" alignment="CENTER" prefHeight="30.0" textFill="#28a745" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            
+            <!-- Action Buttons -->
+            <VBox spacing="15.0">
+               <children>
+                  <!-- Create Account Button -->
+                  <Button fx:id="btnCreateAccount" mnemonicParsing="false" onAction="#btnCreateAccountClicked" prefHeight="55.0" prefWidth="320.0" style="-fx-background-color: linear-gradient(to right, #667eea 0%, #764ba2 100%); -fx-text-fill: white; -fx-background-radius: 25; -fx-cursor: hand;" text="CREAR CUENTA">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <effect>
+                        <DropShadow blurType="GAUSSIAN" color="#667eea40" offsetY="5.0" radius="10.0" />
+                     </effect>
+                  </Button>
+                  
+                  <!-- Cancel Button -->
+                  <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#btnCancelClicked" prefHeight="45.0" prefWidth="320.0" style="-fx-background-color: transparent; -fx-text-fill: #666666; -fx-border-color: #e9ecef; -fx-border-radius: 22; -fx-background-radius: 22; -fx-cursor: hand;" text="CANCELAR">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+            
+            <!-- Additional Info -->
+            <VBox alignment="CENTER" spacing="8.0">
+               <children>
+                  <Rectangle fill="#e9ecef" height="1.0" width="250.0" />
+                  <Label text="Tu nueva cuenta estará disponible inmediatamente" textAlignment="CENTER" textFill="#999999">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      
+      <!-- Security Footer -->
+      <VBox alignment="CENTER_LEFT" layoutX="50.0" layoutY="540.0" spacing="5.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="8.0">
+               <children>
+                  <Rectangle arcHeight="3.0" arcWidth="3.0" fill="#17a2b8" height="16.0" opacity="0.8" width="16.0" />
+                  <Label text="Proceso seguro y protegido" textFill="WHITE" opacity="0.8">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Label text="Todas las cuentas incluyen protección bancaria estándar" textFill="WHITE" opacity="0.6">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      
+      <!-- Account Types Preview (Decorative) -->
+      <VBox alignment="CENTER" layoutX="50.0" layoutY="400.0" spacing="8.0">
+         <children>
+            <Label text="Tipos Disponibles:" textFill="WHITE" opacity="0.7">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <HBox spacing="15.0">
+               <children>
+                  <VBox alignment="CENTER" spacing="5.0">
+                     <children>
+                        <Rectangle arcHeight="8.0" arcWidth="8.0" fill="WHITE" height="30.0" opacity="0.8" width="30.0" />
+                        <Label text="Ahorros" textFill="WHITE" opacity="0.7">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" spacing="5.0">
+                     <children>
+                        <Rectangle arcHeight="8.0" arcWidth="8.0" fill="WHITE" height="30.0" opacity="0.8" width="30.0" />
+                        <Label text="Corriente" textFill="WHITE" opacity="0.7">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" spacing="5.0">
+                     <children>
+                        <Rectangle arcHeight="8.0" arcWidth="8.0" fill="WHITE" height="30.0" opacity="0.8" width="30.0" />
+                        <Label text="Premium" textFill="WHITE" opacity="0.7">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.uniquindio.proyectofinal_ds.controller.SignupController">
+   <children>
+      <!-- Background Gradient -->
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="700.0" width="1000.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.2" green="0.4" blue="0.8" opacity="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.1" green="0.2" blue="0.5" opacity="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      
+      <!-- Left Side - Decorative -->
+      <VBox alignment="CENTER" layoutX="50.0" layoutY="150.0" prefHeight="400.0" prefWidth="400.0" spacing="30.0">
+         <children>
+            <!-- Logo/Icon -->
+            <VBox alignment="CENTER" spacing="15.0">
+               <children>
+                  <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="80.0" opacity="0.9" width="80.0" />
+                  <Label text="BANCO DIGITAL" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="28.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            
+            <!-- Welcome Text -->
+            <VBox alignment="CENTER" spacing="20.0">
+               <children>
+                  <Label text="Únete a nosotros" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="26.0" />
+                     </font>
+                  </Label>
+                  <Label text="Crea tu cuenta bancaria digital y disfruta de todos nuestros servicios" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            
+            <!-- Benefits -->
+            <VBox spacing="15.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="8.0" opacity="0.8" width="8.0" />
+                        <Label text="Transferencias gratuitas" textFill="WHITE" opacity="0.9">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="8.0" opacity="0.8" width="8.0" />
+                        <Label text="Seguridad 24/7" textFill="WHITE" opacity="0.9">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="8.0" opacity="0.8" width="8.0" />
+                        <Label text="Sin comisiones ocultas" textFill="WHITE" opacity="0.9">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      
+      <!-- Right Side - Signup Form -->
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutX="500.0" layoutY="25.0" prefHeight="650.0" prefWidth="450.0" style="-fx-background: transparent; -fx-background-color: transparent;" vbarPolicy="AS_NEEDED">
+         <content>
+            <VBox alignment="CENTER" prefWidth="420.0" spacing="20.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+               <padding>
+                  <Insets bottom="30.0" left="35.0" right="35.0" top="30.0" />
+               </padding>
+               <effect>
+                  <DropShadow blurType="GAUSSIAN" color="#00000040" offsetX="0.0" offsetY="10.0" radius="20.0" />
+               </effect>
+               
+               <children>
+                  <!-- Form Title -->
+                  <VBox alignment="CENTER" spacing="8.0">
+                     <children>
+                        <Label text="Crear Cuenta" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="26.0" />
+                           </font>
+                        </Label>
+                        <Label text="Completa el formulario para registrarte" textAlignment="CENTER" textFill="#666666">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  
+                  <!-- Name Field -->
+                  <VBox spacing="6.0">
+                     <children>
+                        <Label text="Nombre Completo" textFill="#333333">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="tfName" prefHeight="40.0" promptText="Juan Pérez García" style="-fx-background-color: #f8f9fa; -fx-border-color: #e9ecef; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 10;">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </VBox>
+                  
+                  <!-- Email Field -->
+                  <VBox spacing="6.0">
+                     <children>
+                        <Label text="Correo Electrónico" textFill="#333333">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="tfEmail" prefHeight="40.0" promptText="ejemplo@correo.com" style="-fx-background-color: #f8f9fa; -fx-border-color: #e9ecef; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 10;">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </VBox>
+                  
+                  <!-- Password Field -->
+                  <VBox spacing="6.0">
+                     <children>
+                        <Label text="Contraseña" textFill="#333333">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="tfPassword" prefHeight="40.0" promptText="Mínimo 8 caracteres" style="-fx-background-color: #f8f9fa; -fx-border-color: #e9ecef; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 10;">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </VBox>
+                  
+                  <!-- Confirm Password Field -->
+                  <VBox spacing="6.0">
+                     <children>
+                        <Label text="Confirmar Contraseña" textFill="#333333">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="tfConfirmPassword" prefHeight="40.0" promptText="Repite tu contraseña" style="-fx-background-color: #f8f9fa; -fx-border-color: #e9ecef; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 10;">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </VBox>
+                  
+                  <!-- Cellphone Field -->
+                  <VBox spacing="6.0">
+                     <children>
+                        <Label text="Número de Celular" textFill="#333333">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="tfCellphone" prefHeight="40.0" promptText="+57 300 123 4567" style="-fx-background-color: #f8f9fa; -fx-border-color: #e9ecef; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 10;">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </VBox>
+                  
+                  <!-- Address Field -->
+                  <VBox spacing="6.0">
+                     <children>
+                        <Label text="Dirección" textFill="#333333">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="tfAddress" prefHeight="40.0" promptText="Calle 123 #45-67, Ciudad" style="-fx-background-color: #f8f9fa; -fx-border-color: #e9ecef; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 10;">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </VBox>
+                  
+                  <!-- Message Label -->
+                  <Label fx:id="lbMessage" alignment="CENTER" prefHeight="18.0" textFill="#dc3545" wrapText="true">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Label>
+                  
+                  <!-- Signup Button -->
+                  <Button fx:id="btnSignup" mnemonicParsing="false" onAction="#btnSignupClicked" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: linear-gradient(to right, #667eea 0%, #764ba2 100%); -fx-text-fill: white; -fx-background-radius: 22; -fx-cursor: hand;" text="CREAR CUENTA">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <effect>
+                        <DropShadow blurType="GAUSSIAN" color="#667eea40" offsetY="4.0" radius="8.0" />
+                     </effect>
+                  </Button>
+                  
+                  <!-- Divider -->
+                  <HBox alignment="CENTER" spacing="12.0">
+                     <children>
+                        <Rectangle fill="#e9ecef" height="1.0" width="70.0" />
+                        <Label text="o" textFill="#666666">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <Rectangle fill="#e9ecef" height="1.0" width="70.0" />
+                     </children>
+                  </HBox>
+                  
+                  <!-- Login Link -->
+                  <VBox alignment="CENTER" spacing="8.0">
+                     <children>
+                        <Label text="¿Ya tienes una cuenta?" textFill="#666666">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <Hyperlink fx:id="hlGoToLogin" onAction="#hlGoToLoginClicked" style="-fx-text-fill: #667eea; -fx-underline: false;" text="Iniciar sesión aquí">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Hyperlink>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+      
+      <!-- Security Info -->
+      <VBox alignment="CENTER_LEFT" layoutX="50.0" layoutY="620.0" spacing="5.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="8.0">
+               <children>
+                  <Rectangle arcHeight="3.0" arcWidth="3.0" fill="WHITE" height="16.0" opacity="0.8" width="16.0" />
+                  <Label text="Registro 100% seguro" textFill="WHITE" opacity="0.8">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Label text="Cumplimos con todas las normas de protección de datos" textFill="WHITE" opacity="0.6">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

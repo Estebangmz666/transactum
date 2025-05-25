@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.uniquindio.proyectofinal_ds.controller.AccountManagementController">
+   <children>
+      <!-- Background Gradient -->
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="600.0" width="900.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.2" green="0.4" blue="0.8" opacity="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.1" green="0.2" blue="0.5" opacity="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      
+      <!-- Header Section -->
+      <VBox alignment="CENTER" layoutX="50.0" layoutY="30.0" prefWidth="800.0" spacing="10.0">
+         <children>
+            <Label text="GESTIÓN DE CUENTA" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="32.0" />
+               </font>
+            </Label>
+            <Label text="Administra tu cuenta bancaria y realiza operaciones" textFill="WHITE" opacity="0.8">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      
+      <!-- Main Content Area -->
+      <HBox alignment="CENTER" layoutX="50.0" layoutY="120.0" prefWidth="800.0" spacing="30.0">
+         <children>
+            <!-- Account Information Card -->
+            <VBox prefHeight="420.0" prefWidth="380.0" spacing="25.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+               <padding>
+                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+               </padding>
+               <effect>
+                  <DropShadow blurType="GAUSSIAN" color="#00000040" offsetX="0.0" offsetY="10.0" radius="20.0" />
+               </effect>
+               
+               <children>
+                  <!-- Card Header -->
+                  <VBox alignment="CENTER" spacing="15.0">
+                     <children>
+                        <Circle fill="#667eea" opacity="0.9" radius="40.0" />
+                        <VBox alignment="CENTER" layoutX="110.0" layoutY="15.0" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="15.0">
+                           <children>
+                              <Label text="💳" textFill="WHITE">
+                                 <font>
+                                    <Font size="35.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <Label text="Información de Cuenta" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  
+                  <!-- Account Details -->
+                  <VBox spacing="20.0">
+                     <children>
+                        <!-- Account ID -->
+                        <VBox spacing="8.0" style="-fx-background-color: #f8f9fa; -fx-background-radius: 10; -fx-padding: 15;">
+                           <children>
+                              <Label text="ID de Cuenta" textFill="#666666">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblAccountId" text="XXXX-XXXX-XXXX" textFill="#333333">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        
+                        <!-- Account Type -->
+                        <VBox spacing="8.0" style="-fx-background-color: #f8f9fa; -fx-background-radius: 10; -fx-padding: 15;">
+                           <children>
+                              <Label text="Tipo de Cuenta" textFill="#666666">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblAccountType" text="Cuenta de Ahorros" textFill="#333333">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        
+                        <!-- Balance -->
+                        <VBox spacing="8.0" style="-fx-background-color: linear-gradient(to right, #28a745 0%, #20c997 100%); -fx-background-radius: 10; -fx-padding: 15;">
+                           <children>
+                              <Label text="Saldo Disponible" textFill="WHITE" opacity="0.9">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblSaldo" text="$0.00" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  
+                  <!-- Account Status -->
+                  <HBox alignment="CENTER" spacing="10.0" style="-fx-background-color: #d4edda; -fx-background-radius: 8; -fx-padding: 10;">
+                     <children>
+                        <Circle fill="#28a745" radius="6.0" />
+                        <Label text="Cuenta Activa" textFill="#155724">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            
+            <!-- Operations Panel -->
+            <VBox prefHeight="420.0" prefWidth="380.0" spacing="25.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+               <padding>
+                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+               </padding>
+               <effect>
+                  <DropShadow blurType="GAUSSIAN" color="#00000040" offsetX="0.0" offsetY="10.0" radius="20.0" />
+               </effect>
+               
+               <children>
+                  <!-- Operations Header -->
+                  <VBox alignment="CENTER" spacing="10.0">
+                     <children>
+                        <Label text="Operaciones Disponibles" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label text="Selecciona la operación que deseas realizar" textAlignment="CENTER" textFill="#666666">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  
+                  <!-- Operation Buttons -->
+                  <VBox spacing="15.0">
+                     <children>
+                        <!-- Deposit Button -->
+                        <Button fx:id="btnGoToDeposit" mnemonicParsing="false" onAction="#btnGoToDepositClicked" prefHeight="50.0" prefWidth="320.0" style="-fx-background-color: linear-gradient(to right, #28a745 0%, #20c997 100%); -fx-text-fill: white; -fx-background-radius: 12; -fx-cursor: hand;" text="💰  DEPOSITAR">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <effect>
+                              <DropShadow blurType="GAUSSIAN" color="#28a74530" offsetY="3.0" radius="8.0" />
+                           </effect>
+                        </Button>
+                        
+                        <!-- Withdraw Button -->
+                        <Button fx:id="btnGoToWithdraw" mnemonicParsing="false" onAction="#btnGoToWithdrawClicked" prefHeight="50.0" prefWidth="320.0" style="-fx-background-color: linear-gradient(to right, #fd7e14 0%, #ffc107 100%); -fx-text-fill: white; -fx-background-radius: 12; -fx-cursor: hand;" text="💸  RETIRAR">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <effect>
+                              <DropShadow blurType="GAUSSIAN" color="#fd7e1430" offsetY="3.0" radius="8.0" />
+                           </effect>
+                        </Button>
+                        
+                        <!-- Transfer Button -->
+                        <Button fx:id="btnGoToTransference" mnemonicParsing="false" onAction="#btnGoToTransferenceClicked" prefHeight="50.0" prefWidth="320.0" style="-fx-background-color: linear-gradient(to right, #667eea 0%, #764ba2 100%); -fx-text-fill: white; -fx-background-radius: 12; -fx-cursor: hand;" text="🔄  TRANSFERIR">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <effect>
+                              <DropShadow blurType="GAUSSIAN" color="#667eea30" offsetY="3.0" radius="8.0" />
+                           </effect>
+                        </Button>
+                     </children>
+                  </VBox>
+                  
+                  <!-- Divider -->
+                  <VBox alignment="CENTER" spacing="10.0">
+                     <children>
+                        <Rectangle fill="#e9ecef" height="1.0" width="280.0" />
+                        <Label text="Gestión de Cuenta" textFill="#999999">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  
+                  <!-- Account Management Buttons -->
+                  <VBox spacing="15.0">
+                     <children>
+                        <!-- Back Button -->
+                        <Button fx:id="btnBack" mnemonicParsing="false" onAction="#btnBackClicked" prefHeight="45.0" prefWidth="320.0" style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-background-radius: 12; -fx-cursor: hand;" text="⬅  VOLVER AL MENÚ">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        
+                        <!-- Delete Account Button -->
+                        <Button fx:id="btnDeleteAccount" mnemonicParsing="false" onAction="#btnDeleteAccountClicked" prefHeight="45.0" prefWidth="320.0" style="-fx-background-color: transparent; -fx-text-fill: #dc3545; -fx-border-color: #dc3545; -fx-border-radius: 12; -fx-background-radius: 12; -fx-cursor: hand;" text="🗑  ELIMINAR CUENTA">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      
+      <!-- Footer Information -->
+      <VBox alignment="CENTER" layoutX="50.0" layoutY="560.0" spacing="5.0">
+         <children>
+            <HBox alignment="CENTER" spacing="30.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" spacing="8.0">
+                     <children>
+                        <Rectangle arcHeight="3.0" arcWidth="3.0" fill="#28a745" height="12.0" opacity="0.8" width="12.0" />
+                        <Label text="Operaciones en tiempo real" textFill="WHITE" opacity="0.7">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" spacing="8.0">
+                     <children>
+                        <Rectangle arcHeight="3.0" arcWidth="3.0" fill="#17a2b8" height="12.0" opacity="0.8" width="12.0" />
+                        <Label text="Protección bancaria garantizada" textFill="WHITE" opacity="0.7">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" spacing="8.0">
+                     <children>
+                        <Rectangle arcHeight="3.0" arcWidth="3.0" fill="#ffc107" height="12.0" opacity="0.8" width="12.0" />
+                        <Label text="Soporte 24/7 disponible" textFill="WHITE" opacity="0.7">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
