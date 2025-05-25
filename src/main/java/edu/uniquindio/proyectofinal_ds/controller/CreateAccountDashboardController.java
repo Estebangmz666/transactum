@@ -1,13 +1,10 @@
 package edu.uniquindio.proyectofinal_ds.controller;
 
-import java.math.BigDecimal;
+import java.util.UUID;
 
-import edu.uniquindio.proyectofinal_ds.dao.AccountDAO;
-import edu.uniquindio.proyectofinal_ds.dao.impl.JDBCAccountDAO;
-import edu.uniquindio.proyectofinal_ds.dto.AccountDTO;
-import edu.uniquindio.proyectofinal_ds.mapper.AccountMapper;
+import edu.uniquindio.proyectofinal_ds.model.Account;
 import edu.uniquindio.proyectofinal_ds.model.AccountType;
-import edu.uniquindio.proyectofinal_ds.service.AuthService;
+import edu.uniquindio.proyectofinal_ds.service.AccountService;
 import edu.uniquindio.proyectofinal_ds.util.Session;
 import edu.uniquindio.proyectofinal_ds.util.ViewNavigator;
 import javafx.animation.PauseTransition;
@@ -16,10 +13,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.util.Duration;
 
 public class CreateAccountDashboardController {
+
+    private final AccountService accountService = new AccountService();
 
     @FXML
     private Button btnCancel;
@@ -34,9 +32,6 @@ public class CreateAccountDashboardController {
     private Label lblMessage;
 
     @FXML
-    private TextField tfAccountNumber;
-
-    @FXML
     void initialize() {
         for (AccountType type : AccountType.values()) {
             cbAccountType.getItems().add(type.getDescription());
@@ -46,35 +41,21 @@ public class CreateAccountDashboardController {
 
     @FXML
     void btnCancelClicked(ActionEvent event) {
-        ViewNavigator.changeView("/view/MainDashboard.fxml");
+        ViewNavigator.changeView("MainDashboard");
     }
 
     @FXML
     void btnCreateAccountClicked(ActionEvent event) {
-        String accountNumber = tfAccountNumber.getText();
         String accountTypeDesc = cbAccountType.getValue();
+        UUID currentUserId = Session.getCurrentUser().getId();
 
         try {
-            AuthService.validateAccountNumber(accountNumber);
-            AuthService.validateAccountType(accountTypeDesc);
-
-            AccountType accountType = AccountType.getAccountTypeFromDescription(accountTypeDesc);
-            if (accountType == null) {
-                lblMessage.setText("Tipo de cuenta inválido.");
-                return;
-            }
-
-            AccountDTO accountDTO = new AccountDTO(Session.getCurrentUser().getId(), accountType, BigDecimal.ZERO, accountNumber);
-
-            AccountDAO accountDAO = new JDBCAccountDAO();
-
-            accountDAO.saveAccount(AccountMapper.INSTANCE.toAccount(accountDTO));
-
-            lblMessage.setText("Cuenta creada exitosamente.");
-            tfAccountNumber.clear();
+            Account newAccount = accountService.createAccount(currentUserId, accountTypeDesc);
+            Session.getCurrentUser().addAccount(newAccount);
+            lblMessage.setText("Cuenta con id: " + newAccount.getId()  + " creada exitosamente.");
             PauseTransition pause = new PauseTransition(Duration.seconds(1));
             pause.setOnFinished(e -> {
-                ViewNavigator.changeView("/view/MainDashboard.fxml");
+                ViewNavigator.changeView("MainDashboard");
             });
             pause.play();
         } catch (IllegalArgumentException e) {

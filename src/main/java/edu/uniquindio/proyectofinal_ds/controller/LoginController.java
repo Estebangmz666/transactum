@@ -68,11 +68,11 @@ public class LoginController {
 
         Session.setCurrentUser(user);
         
-        ViewNavigator.changeView("/view/MainDashboard.fxml");
+        ViewNavigator.changeView("MainDashboard");
     }
 
     @FXML
     void hlSignupClicked(ActionEvent event) {
-        ViewNavigator.changeView("/view/Signup.fxml");
+        ViewNavigator.changeView("Signup");
     }
 }

@@ -2,7 +2,7 @@ package edu.uniquindio.proyectofinal_ds.datastructures;
 
 import java.util.Iterator;
 
-public class LinkedList<T> implements List<T>, Iterable<T> {
+public class LinkedList<T> implements List<T>{
 
     private static class Node<T> {
         T data;

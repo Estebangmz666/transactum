@@ -101,16 +101,6 @@ public class JDBCAccountDAO implements AccountDAO {
         AccountType type = AccountType.valueOf(rs.getString("accountType"));
         BigDecimal balance = rs.getBigDecimal("balance");
 
-        Account account = new Account(userId, type);
-        try {
-            java.lang.reflect.Field idField = Account.class.getDeclaredField("id");
-            idField.setAccessible(true);
-            idField.set(account, id);
-        } catch (Exception e) {
-            throw new RuntimeException("Error setting account ID via reflection", e);
-        }
-        account.setBalance(balance);
-
-        return account;
-    }   
+        return new Account(id, userId, type, balance);
+    }
 }

@@ -1,6 +1,6 @@
 package edu.uniquindio.proyectofinal_ds.datastructures;
 
-public interface List<T> {
+public interface List<T> extends Iterable<T> {
     void add(T element);
     void add(int index, T element);
     T get(int index);

@@ -1,10 +1,7 @@
 package edu.uniquindio.proyectofinal_ds.controller;
 
-import edu.uniquindio.proyectofinal_ds.dao.UserDAO;
-import edu.uniquindio.proyectofinal_ds.dao.impl.JDBCUserDAO;
 import edu.uniquindio.proyectofinal_ds.dto.UserDTO;
-import edu.uniquindio.proyectofinal_ds.mapper.UserMapper;
-import edu.uniquindio.proyectofinal_ds.service.AuthService;
+import edu.uniquindio.proyectofinal_ds.service.UserService;
 import edu.uniquindio.proyectofinal_ds.util.Session;
 import edu.uniquindio.proyectofinal_ds.util.ViewNavigator;
 import javafx.event.ActionEvent;
@@ -52,42 +49,30 @@ public class SignupController {
         String cellphone = tfCellphone.getText().trim();
         String address = tfAddress.getText().trim();
 
+        if (!password.equals(confirmPassword)) {
+            lbMessage.setText("Las contraseñas no coinciden.");
+            return;
+        }
+
+        UserDTO newUserDTO = new UserDTO();
+        newUserDTO.setFullName(name);
+        newUserDTO.setEmail(email);
+        newUserDTO.setPassword(password);
+        newUserDTO.setCellphone(cellphone);
+        newUserDTO.setAddress(address);
+
+        UserService userService = new UserService();
+
         try {
-            AuthService.validateEmail(email);
-            AuthService.validateAddress(address);
-            AuthService.validateCellphone(cellphone);
-            AuthService.validatePassword(password);
-
-            if (!password.equals(confirmPassword)) {
-                lbMessage.setText("Las contraseñas no coinciden.");
-                return;
-            }
-
-            UserDAO userDAO = new JDBCUserDAO();
-
-            if (userDAO.getUserByEmail(email) != null) {
-                lbMessage.setText("El correo electrónico ya está en uso.");
-                return;
-            }
-
-            UserDTO newUserDTO = new UserDTO();
-            newUserDTO.setFullName(name);
-            newUserDTO.setEmail(email);
-            newUserDTO.setPassword(password);
-            newUserDTO.setCellphone(cellphone);
-            newUserDTO.setAddress(address);
-
-            userDAO.saveUser(UserMapper.INSTANCE.toUser(newUserDTO));
-            Session.setCurrentUser(userDAO.getUserByEmail(email));
-            ViewNavigator.changeView("/view/MainDashboard.fxml");
-
+            Session.setCurrentUser(userService.registerUser(newUserDTO));
+            ViewNavigator.changeView("MainDashboard");
         } catch (IllegalArgumentException e) {
-            lbMessage.setText(e.getMessage());
+            lbMessage.setText("Error: " + e.getMessage());
         }
     }
   
     @FXML
     void hlGoToLoginClicked(ActionEvent event) {
-        ViewNavigator.changeView("/view/Login.fxml");
+        ViewNavigator.changeView("Login");
     }
 }
