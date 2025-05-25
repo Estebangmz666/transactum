@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.uniquindio.proyectofinal_ds.controller.LoginController">
+   <left>
+      <AnchorPane prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: linear-gradient(to bottom right, #2c3e50, #4a5d6e);" BorderPane.alignment="CENTER">
+         <children>
+            <Text fill="WHITE" layoutX="60.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Transactum">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+               <effect>
+                  <DropShadow color="rgba(0,0,0,0.3)" radius="3.0" spread="0.5" />
+               </effect>
+            </Text>
+            <Text fill="WHITE" layoutX="60.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Controla tus finanzas de manera sencilla y segura" wrappingWidth="250">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </left>
+   <right>
+      <AnchorPane prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: #f8f9fa;" BorderPane.alignment="CENTER">
+         <children>
+            <Text fill="#2c3e50" layoutX="72.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Inicio de Sesión">
+               <font>
+                  <Font name="System Bold" size="28.0" />
+               </font>
+            </Text>
+            
+            <TextField fx:id="tfEmail" layoutX="75.0" layoutY="200.0" prefWidth="200.0" promptText="Correo electrónico" style="-fx-background-color: #ffffff; -fx-border-color: #e0e0e0; -fx-border-radius: 4; -fx-background-radius: 4; -fx-padding: 10;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            
+            <PasswordField fx:id="pfPassword" layoutX="75.0" layoutY="260.0" prefWidth="200.0" promptText="Contraseña" style="-fx-background-color: #ffffff; -fx-border-color: #e0e0e0; -fx-border-radius: 4; -fx-background-radius: 4; -fx-padding: 10;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </PasswordField>
+            
+            <Button fx:id="btnLogin" layoutX="75.0" layoutY="330.0" mnemonicParsing="false" onAction="#btnLoginClicked" prefWidth="200.0" style="-fx-background-color: #2c3e50; -fx-background-radius: 4; -fx-cursor: hand;" text="Iniciar Sesión" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <effect>
+                  <DropShadow color="rgba(0,0,0,0.1)" radius="5.0" spread="0.3" />
+               </effect>
+            </Button>
+            
+            <Hyperlink fx:id="hlSignup" layoutX="92.0" layoutY="378.0" onAction="#hlSignupClicked" style="-fx-text-fill: #5a6268; -fx-border-color: transparent; -fx-underline: false;" text="¿No tienes cuenta? Regístrate">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Hyperlink>
+            
+            <Label fx:id="lbMessage" alignment="CENTER" layoutX="75.0" layoutY="420.0" prefHeight="17.0" prefWidth="200.0" style="-fx-text-fill: #e74c3c; -fx-font-size: 12;" textAlignment="CENTER" />
+         </children>
+      </AnchorPane>
+   </right>
+</BorderPane>

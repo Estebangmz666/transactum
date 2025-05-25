@@ -12,6 +12,7 @@ public class UserDTO {
     private UUID id;
     private String fullName;
     private String email;
+    private String password;
     private String address;
     private String cellphone;
 }

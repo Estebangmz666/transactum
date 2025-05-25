@@ -1,6 +1,8 @@
 package edu.uniquindio.proyectofinal_ds.dto;
 
 import edu.uniquindio.proyectofinal_ds.model.AccountType;
+
+import java.math.BigDecimal;
 import java.util.UUID;
 import lombok.*;
 
@@ -11,4 +13,6 @@ import lombok.*;
 public class AccountDTO {
     private UUID userId;
     private AccountType accountType;
+    private BigDecimal balance;
+    private String accountNumber;
 }

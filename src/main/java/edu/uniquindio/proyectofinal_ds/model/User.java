@@ -11,6 +11,7 @@ public class User {
     private final UUID id;
     private String fullName;
     private String email;
+    private String password;
     private String address;
     private String cellphone;
     private final HashMap<UUID, Account> accounts;
@@ -23,6 +24,23 @@ public class User {
         this.email = email;
         this.address = address;
         this.cellphone = cellphone;
+        this.accounts = new HashMap<>();
+    }
+
+    public User(UUID id, String fullName, String email, String password, String address, String cellphone, int points, UserRank rank) {
+        this.id = id;
+        this.fullName = fullName;
+        this.email = email;
+        this.password = password;
+        this.address = address;
+        this.cellphone = cellphone;
+        this.accounts = new HashMap<>();
+        this.points = points;
+        this.rank = rank;
+    }
+
+    public User() {
+        this.id = UUID.randomUUID();
         this.accounts = new HashMap<>();
     }
 

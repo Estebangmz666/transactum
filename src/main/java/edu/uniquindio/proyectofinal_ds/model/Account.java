@@ -10,12 +10,14 @@ public class Account {
     private UUID userId;
     private AccountType accountType;
     private BigDecimal balance;
+    private String accountNumber;
 
-    public Account(UUID userId, AccountType accountType) {
+    public Account(UUID userId, AccountType accountType, String accountNumber) {
         this.id = UUID.randomUUID();
         this.userId = userId;
         this.accountType = accountType;
         this.balance = BigDecimal.ZERO;
+        this.accountNumber = accountNumber;
     }
 
     public void setAccountType(AccountType accountType) {
