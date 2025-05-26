@@ -78,7 +78,7 @@ public class AccountManagementController {
 
     @FXML
     void btnGoToTransferenceClicked(ActionEvent event) {
-        ViewNavigator.changeViewWithData("TransferenceDashboard", currentAccount);
+        ViewNavigator.changeViewWithData("TransferDashboard", currentAccount);
     }
 
     @FXML
@@ -91,6 +91,8 @@ public class AccountManagementController {
             lblAccountId.setText(currentAccount.getId().toString());
             lblAccountType.setText(currentAccount.getAccountType().toString());
             lblSaldo.setText(String.format("$%.2f", currentAccount.getBalance()));
+        } else {
+            System.out.println("Account nula en loadAccountData en AccounManagementController");
         }
     }
 

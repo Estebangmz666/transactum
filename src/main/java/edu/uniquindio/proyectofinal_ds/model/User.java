@@ -60,6 +60,14 @@ public class User {
         this.cellphone = cellphone;
     }
 
+    public void setPoints(Integer points){
+        if (points == null || points < 0){
+            throw new IllegalArgumentException("Los puntos no pueden ser negativos");
+        }
+        this.points = points;
+        updateRank();
+    }
+
     public Account getAccount(UUID id) {
         return accounts.get(id);
     }
@@ -73,11 +81,14 @@ public class User {
     }
 
     public void addPoints(int earnedPoints) {
+        if (earnedPoints < 0) {
+            throw new IllegalArgumentException("No se pueden agregar puntos negativos.");
+        }
         this.points += earnedPoints;
         updateRank();
     }
 
-    private void updateRank() {
+    public void updateRank() {
         if (points >= 5000) {
             rank = UserRank.PLATINUM;
         } else if (points >= 1001) {

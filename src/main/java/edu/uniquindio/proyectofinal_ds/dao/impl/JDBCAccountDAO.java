@@ -95,6 +95,24 @@ public class JDBCAccountDAO implements AccountDAO {
         }
     }
 
+    @Override
+    public List<Account> findAllAccounts() throws Exception {
+        String sql = "SELECT * FROM Accounts";
+        edu.uniquindio.proyectofinal_ds.datastructures.List<Account> accounts = new LinkedList<>();
+
+        try (Connection conn = DatabaseConnection.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            ResultSet rs = pstmt.executeQuery()) {
+            
+            while (rs.next()) {
+                accounts.add(mapRowToAccount(rs));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al obtener todas las cuentas de la base de datos", e);
+        }
+        return accounts;
+    }
+
     private Account mapRowToAccount(ResultSet rs) throws SQLException {
         UUID id = UUID.fromString(rs.getString("id"));
         UUID userId = UUID.fromString(rs.getString("userId"));

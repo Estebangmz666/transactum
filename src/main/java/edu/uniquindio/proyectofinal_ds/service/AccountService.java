@@ -1,5 +1,6 @@
 package edu.uniquindio.proyectofinal_ds.service;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 import edu.uniquindio.proyectofinal_ds.dao.AccountDAO;
@@ -29,6 +30,7 @@ public class AccountService {
         }
 
         Account account = new Account(userId, accountType);
+        System.out.println("Cuenta creada con ID: " + account.getId());
         return accountDAO.saveAccount(account);
     }
 
@@ -39,8 +41,8 @@ public class AccountService {
         return accountDAO.deleteAccount(account.getId());
     }
 
-    public static Account getAccountById(UUID accountId) {
-        return accountRegistry.get(accountId);
+    public Account getAccountById(UUID accountId) {
+        return accountDAO.getAccountByID(accountId);
     }
 
     public static void registerAccount(Account account) {
@@ -53,5 +55,35 @@ public class AccountService {
 
     public static void clearAccounts() {
         accountRegistry.clear();
+    }
+
+    public boolean updateAccount(Account account) throws Exception {
+        return accountDAO.updateAccount(account);
+    }
+
+    public BigDecimal getAccountBalance(UUID accountId) {
+        Account account = accountDAO.getAccountByID(accountId);
+        if (account != null) {
+            return account.getBalance();
+        }
+        throw new RuntimeException("Cuenta no encontrada: " + accountId);
+    }
+
+    public java.util.List<Account> findAccountsByUserId(UUID userId) {
+        try {
+            edu.uniquindio.proyectofinal_ds.datastructures.List<Account> customList = accountDAO.findAccountByUserId(userId);
+            return edu.uniquindio.proyectofinal_ds.util.ListUtils.toJavaList(customList);
+        } catch (Exception e) {
+            throw new RuntimeException("Error al obtener cuentas del usuario " + userId, e);
+        }
+    }
+
+    public java.util.List<Account> findAllAccounts() {
+        try {
+            edu.uniquindio.proyectofinal_ds.datastructures.List<Account> customList = accountDAO.findAllAccounts();
+            return edu.uniquindio.proyectofinal_ds.util.ListUtils.toJavaList(customList);
+        } catch (Exception e) {
+            throw new RuntimeException("Error al obtener todas las cuentas", e);
+        }
     }
 }

@@ -1,9 +1,8 @@
 package edu.uniquindio.proyectofinal_ds.controller;
 
-import edu.uniquindio.proyectofinal_ds.dao.UserDAO;
-import edu.uniquindio.proyectofinal_ds.dao.impl.JDBCUserDAO;
 import edu.uniquindio.proyectofinal_ds.model.User;
-import edu.uniquindio.proyectofinal_ds.service.AuthService;
+import edu.uniquindio.proyectofinal_ds.service.UserService;
+import edu.uniquindio.proyectofinal_ds.service.ValidationService;
 import edu.uniquindio.proyectofinal_ds.util.Session;
 import edu.uniquindio.proyectofinal_ds.util.ViewNavigator;
 import javafx.event.ActionEvent;
@@ -16,7 +15,7 @@ import javafx.scene.control.TextField;
 
 public class LoginController {
 
-    private final UserDAO userDAO = new JDBCUserDAO();
+    private final UserService userService = new UserService();
 
     @FXML
     private Button btnLogin;
@@ -35,40 +34,32 @@ public class LoginController {
 
     @FXML
     void btnLoginClicked(ActionEvent event) {
-        String email = tfEmail.getText();
+        String email = tfEmail.getText().trim();
         String password = pfPassword.getText();
 
-        tfEmail.setStyle("");
-        pfPassword.setStyle("");
-        lbMessage.setText("");
-
         try {
-            AuthService.validateEmail(email);
-            AuthService.validatePassword(password);
+            ValidationService.validateEmail(email);
+            ValidationService.validatePassword(password);
         } catch (IllegalArgumentException e) {
             lbMessage.setText(e.getMessage());
             return;
         }
-        
-        if (!userDAO.userExists(email)) {
-            lbMessage.setText("El usuario no existe, por favor regístrate.");
-            return;
-        }
 
-        if (!userDAO.validateUser(email, password)) {
-            lbMessage.setText("Contraseña incorrecta.");
-            return;
-        }
+        try {
+            User user = userService.login(email, password);
+            if (user == null) {
+                lbMessage.setText("Correo o contraseña incorrectos.");
+                return;
+            }
+            
+            Session.setCurrentUser(user);
+            System.out.println(user.toString());
+            ViewNavigator.changeView("MainDashboard");
 
-        User user = userDAO.getUserByEmail(email);
-        if (user == null) {
-            lbMessage.setText("Error al obtener el usuario.");
-            return;
+        } catch (Exception e) {
+            e.printStackTrace();
+            lbMessage.setText("Error interno, intenta más tarde.");
         }
-
-        Session.setCurrentUser(user);
-        
-        ViewNavigator.changeView("MainDashboard");
     }
 
     @FXML

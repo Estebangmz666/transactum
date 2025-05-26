@@ -1,12 +1,13 @@
 package edu.uniquindio.proyectofinal_ds.controller;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 import edu.uniquindio.proyectofinal_ds.model.Account;
+import edu.uniquindio.proyectofinal_ds.service.AccountService;
 import edu.uniquindio.proyectofinal_ds.util.ConfirmDialog;
-import edu.uniquindio.proyectofinal_ds.util.ListUtils;
 import edu.uniquindio.proyectofinal_ds.util.Session;
 import edu.uniquindio.proyectofinal_ds.util.ViewNavigator;
 import javafx.collections.FXCollections;
@@ -38,10 +39,13 @@ public class MainDashboardController {
     private Hyperlink hlLogout;
 
     @FXML
-    private Label lbWelcome;
+    private Label lbInfo;
 
     @FXML
-    private Label lbInfo;
+    private Label lbTotalAmount;
+
+    @FXML
+    private Label lbWelcome;
 
     @FXML
     private ListView<String> lvAccounts;;
@@ -57,11 +61,16 @@ public class MainDashboardController {
         lbInfo.setText("Rango: " + Session.getCurrentUser().getRank() +
                     " | Puntos: " + Session.getCurrentUser().getPoints());
 
+        AccountService as = new AccountService();
+        List<Account> freshAccounts;
+        try {
+            freshAccounts = as.findAccountsByUserId(Session.getCurrentUser().getId());
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            freshAccounts = new ArrayList<>();
+        }
         accountList.clear();
-
-        edu.uniquindio.proyectofinal_ds.datastructures.List<Account> customList = Session.getCurrentUser().getAccounts().values();
-
-        accountList.addAll(ListUtils.toJavaList(customList));
+        accountList.addAll(freshAccounts);
 
         ObservableList<String> items = FXCollections.observableArrayList();
         for (Account acc : accountList) {
@@ -74,10 +83,18 @@ public class MainDashboardController {
                 int selectedIndex = lvAccounts.getSelectionModel().getSelectedIndex();
                 if (selectedIndex >= 0) {
                     Account clickedAccount = accountList.get(selectedIndex);
-                    abrirVistaTransacciones(clickedAccount);
+                    openAccountManagementView(clickedAccount);
                 }
             }
         });
+
+        /*El saldo se consulta automáticamente al ingresar al dashboard, mostrando el total de todas las cuentas del usuario sin necesidad de realizar una transacción explícita.*/
+
+        BigDecimal total = freshAccounts.stream()
+                .map(Account::getBalance)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        lbTotalAmount.setText("Saldo total: $" + total);
     }
 
     @FXML
@@ -105,9 +122,9 @@ public class MainDashboardController {
         }
     }
 
-    private void abrirVistaTransacciones(Account cuenta) {
+    private void openAccountManagementView(Account cuenta) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("src/main/resources/view/AccountManagement.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AccountManagement.fxml"));
             Parent root = loader.load();
             AccountManagementController controller = loader.getController();
             controller.initData(cuenta);

@@ -8,6 +8,7 @@ import java.util.UUID;
 public class TransactionService {
 
     private static final LinkedList<Transaction> transactions = new LinkedList<>();
+    private final static AccountService accountService = new AccountService();
 
     public static boolean executeTransaction(Transaction transaction) {
         boolean result = transaction.execute();
@@ -44,7 +45,7 @@ public class TransactionService {
         boolean success = transaction.execute();
 
         if (success) {
-            Account account = AccountService.getAccountById(transaction.getAccountId());
+            Account account = accountService.getAccountById(transaction.getAccountId());
             User user = UserService.getUserByAccountId(account.getId());
 
             if (user != null) {

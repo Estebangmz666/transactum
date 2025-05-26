@@ -30,7 +30,7 @@
         <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f8f9fa;" BorderPane.alignment="CENTER">
             <children>
                 <ListView fx:id="lvAccounts" layoutX="20.0" layoutY="50.0" prefHeight="200.0" prefWidth="560.0" style="-fx-background-color: #ffffff; -fx-background-radius: 4; -fx-border-color: #e0e0e0; -fx-border-radius: 4; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 1);" />
-                <Hyperlink fx:id="hlLogout" layoutX="260.0" layoutY="270.0" onAction="#hlLogoutClicked" style="-fx-text-fill: #5a6268; -fx-border-color: transparent; -fx-underline: false;" text="Cerrar Sesión">
+                <Hyperlink fx:id="hlLogout" layoutX="500.0" layoutY="273.0" onAction="#hlLogoutClicked" style="-fx-text-fill: #5a6268; -fx-border-color: transparent; -fx-underline: false;" text="Cerrar Sesión">
                     <font>
                         <Font size="12.0" />
                     </font>
@@ -50,6 +50,11 @@
                     </children>
                 </VBox>
             <Label fx:id="lbInfo" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="14.0" prefHeight="35.0" prefWidth="559.0" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbTotalAmount" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="267.0" prefHeight="35.0" prefWidth="478.0" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>

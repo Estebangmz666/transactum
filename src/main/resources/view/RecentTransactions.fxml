@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #f8f9fa;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.uniquindio.proyectofinal_ds.controller.RecentTransactionsController">
+    <TableView fx:id="tableView" layoutX="20.0" layoutY="20.0" prefHeight="400.0" prefWidth="760.0" style="-fx-background-color: #ffffff; -fx-border-color: #e0e0e0; -fx-border-radius: 4; -fx-background-radius: 4;">
+        <columns>
+            <TableColumn fx:id="colTransactionId" prefWidth="250.0" style="-fx-alignment: CENTER;" text="ID" />
+            <TableColumn fx:id="colDate" prefWidth="224.0" style="-fx-alignment: CENTER;" text="Fecha" />
+            <TableColumn fx:id="colAmount" prefWidth="113.0" style="-fx-alignment: CENTER-RIGHT;" text="Monto" />
+            <TableColumn fx:id="colType" prefWidth="171.0" style="-fx-alignment: CENTER;" text="Tipo de Transacción" />
+        </columns>
+    </TableView>
+    <Button fx:id="btnBack" layoutX="350.0" layoutY="440.0" mnemonicParsing="false" onAction="#btnBackClicked" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: #2c3e50; -fx-background-radius: 4; -fx-cursor: hand;" text="Volver" textFill="WHITE" />
+    <Label fx:id="lbMessage" layoutX="20.0" layoutY="440.0" style="-fx-text-fill: #e74c3c; -fx-font-size: 14;" />
+</AnchorPane>

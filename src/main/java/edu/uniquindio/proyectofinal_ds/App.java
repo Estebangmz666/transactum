@@ -1,5 +1,6 @@
 package edu.uniquindio.proyectofinal_ds;
 
+import edu.uniquindio.proyectofinal_ds.service.PointsService;
 import edu.uniquindio.proyectofinal_ds.util.DatabaseInitializer;
 import edu.uniquindio.proyectofinal_ds.util.PropertiesLoader;
 import edu.uniquindio.proyectofinal_ds.util.ViewNavigator;
@@ -10,6 +11,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class App extends Application{
+
+    private final static PointsService pointsService = new PointsService(); 
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -24,6 +27,7 @@ public class App extends Application{
     public static void main(String[] args){
         PropertiesLoader.loadProperties();
         DatabaseInitializer.initializeDatabase();
+        pointsService.loadFromDatabase();
         launch(args);
     }
 }

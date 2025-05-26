@@ -45,7 +45,13 @@ public class DatabaseInitializer {
                 FOREIGN KEY (accountId) REFERENCES Accounts(id),
                 FOREIGN KEY (destinationAccountId) REFERENCES Accounts(id)
             );
+            """;
 
+            String createUserPointsTable = """
+                    CREATE TABLE IF NOT EXISTS userPoints (
+                    userId TEXT PRIMARY KEY,
+                    points INTEGER NOT NULL       
+            );
             """;
 
             statement.execute(createUsersTable);
@@ -56,6 +62,9 @@ public class DatabaseInitializer {
 
             statement.execute(createTransactionsTable);
             System.out.println("Tabla 'Transactions' creada o ya existe.");
+
+            statement.execute(createUserPointsTable);
+            System.out.println("Tabla 'userPoints' creada o ya existe.");
 
         } catch (Exception e) {
             e.printStackTrace();

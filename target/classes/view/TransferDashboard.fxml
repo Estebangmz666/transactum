@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.uniquindio.proyectofinal_ds.controller.TransferDashboardController">
+   <children>
+      <BorderPane prefHeight="400.0" prefWidth="600.0">
+         <top>
+            <AnchorPane prefHeight="77.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to right, #2c3e50, #4a5d6e);" BorderPane.alignment="CENTER">
+               <children>
+                  <Text fill="WHITE" layoutX="20.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Transferir Dinero">
+                     <font>
+                        <Font name="System Bold" size="28.0" />
+                     </font>
+                     <effect>
+                        <DropShadow color="rgba(0,0,0,0.2)" radius="3.0" spread="0.5" />
+                     </effect>
+                  </Text>
+               </children>
+            </AnchorPane>
+         </top>
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f8f9fa;" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="lbMessage" alignment="CENTER" layoutX="50.0" layoutY="20.0" prefHeight="25.0" prefWidth="500.0" style="-fx-text-fill: #e74c3c; -fx-font-size: 14;" textAlignment="CENTER" />
+                  
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="150.0" layoutX="50.0" layoutY="50.0" stroke="#e0e0e0" strokeType="INSIDE" width="500.0" />
+                  
+                  <Text fill="#5a6268" layoutX="50.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Seleccione la cuenta destino">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  
+                  <ComboBox fx:id="cbAccountToTransfer" layoutX="50.0" layoutY="90.0" prefHeight="35.0" prefWidth="500.0" promptText="Seleccione cuenta destino" style="-fx-background-color: #ffffff; -fx-border-color: #e0e0e0; -fx-border-radius: 4; -fx-background-radius: 4; -fx-padding: 5; -fx-font-size: 14;" />
+                  
+                  <Text fill="#5a6268" layoutX="50.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Monto a transferir">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  
+                  <TextField fx:id="tfAmountToTranfer" alignment="CENTER" layoutX="50.0" layoutY="160.0" prefWidth="500.0" promptText="Ingrese el monto" style="-fx-background-color: #ffffff; -fx-border-color: #e0e0e0; -fx-border-radius: 4; -fx-background-radius: 4; -fx-padding: 10; -fx-font-size: 16;">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </TextField>
+                  
+                  <Button fx:id="btnTransfer" layoutX="150.0" layoutY="220.0" mnemonicParsing="false" onAction="#btnTransferClicked" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #2c3e50; -fx-background-radius: 4; -fx-cursor: hand;" text="Transferir" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <effect>
+                        <DropShadow color="rgba(0,0,0,0.1)" radius="5.0" spread="0.3" />
+                     </effect>
+                  </Button>
+                  
+                  <Button fx:id="btnCancel" layoutX="320.0" layoutY="220.0" mnemonicParsing="false" onAction="#btnCancelClicked" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: transparent; -fx-border-color: #2c3e50; -fx-border-radius: 4; -fx-cursor: hand;" text="Cancelar" textFill="#2c3e50">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</VBox>

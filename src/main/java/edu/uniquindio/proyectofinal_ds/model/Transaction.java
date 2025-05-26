@@ -20,4 +20,5 @@ public abstract class Transaction {
     }
 
     public abstract boolean execute();
+    public abstract TransactionRecord toRecord();
 }

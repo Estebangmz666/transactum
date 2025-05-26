@@ -9,7 +9,15 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TransferDTO {
-    private UUID sourceAccountId;
-    private UUID destinationAccountId;
+    private UUID fromAccountId;
+    private UUID toAccountId;
     private BigDecimal amount;
+
+    public UUID getFromAccountId() {
+        return fromAccountId;
+    }
+
+    public UUID getToAccountId() {
+        return toAccountId;
+    }
 }
