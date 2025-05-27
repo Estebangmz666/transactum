@@ -130,4 +130,33 @@ public class JDBCUserDAO implements UserDAO{
             return false;
         }
     }
+
+    @Override
+    public User getUserById(UUID id) {
+        String sql = "SELECT * FROM Users WHERE id = ?";
+        try (Connection conn = DatabaseConnection.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, id.toString());
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    UUID userId = UUID.fromString(rs.getString("id"));
+                    String fullName = rs.getString("fullName");
+                    String email = rs.getString("email");
+                    String address = rs.getString("address");
+                    String cellphone = rs.getString("cellphone");
+                    int points = rs.getInt("points");
+                    UserRank rank = UserRank.valueOf(rs.getString("rank").toUpperCase());
+                    String password = rs.getString("password");
+
+                    return new User(userId, fullName, email, password, address, cellphone, points, rank);
+                }
+                return null;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 }

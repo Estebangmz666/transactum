@@ -33,6 +33,9 @@ public class MainDashboardController {
     private Button btnGoToRecentTransactions;
 
     @FXML
+    private Button btnGoToRedeemPoints;
+
+    @FXML
     private Button btnHamburguer;
 
     @FXML
@@ -95,6 +98,7 @@ public class MainDashboardController {
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
 
         lbTotalAmount.setText("Saldo total: $" + total);
+        vbMenu.setVisible(false);
     }
 
     @FXML
@@ -105,6 +109,11 @@ public class MainDashboardController {
     @FXML
     void btnGoToRecentTransactionsClicked(ActionEvent event) {
         ViewNavigator.changeView("RecentTransactions");
+    }
+
+    @FXML
+    void btnGoToRedeemPointsClicked(ActionEvent event) {
+        ViewNavigator.changeView("RedeemPoints");
     }
 
     @FXML
