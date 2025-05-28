@@ -26,7 +26,7 @@ Transactum is a Java application that simulates a virtual wallet with an integra
 1. Clone the repository to your local machine:
 
    ```bash
-   git clone https://github.com/your_username/Transactum.git
+   git clone https://github.com/EstebanGmz666/Transactum.git
    cd Transactum
    ```
 2. Build the project:
