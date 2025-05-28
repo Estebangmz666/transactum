@@ -87,14 +87,33 @@ public class ScheduleTransactionDashboardController {
                 return;
             }
 
-            BigDecimal amount = new BigDecimal(amountField.getText().trim());
+            // Validar y parsear monto
+            BigDecimal amount;
+            try {
+                amount = new BigDecimal(amountField.getText().trim());
+                if (amount.compareTo(BigDecimal.ZERO) <= 0) {
+                    statusLabel.setText("❌ El monto debe ser mayor a cero.");
+                    return;
+                }
+            } catch (NumberFormatException e) {
+                statusLabel.setText("❌ Formato de monto inválido.");
+                return;
+            }
+
+            // Validar fecha/hora futura
             LocalDate date = datePicker.getValue();
             int hour = hourSpinner.getValue();
             int minute = minuteSpinner.getValue();
-
             LocalDateTime dateTime = LocalDateTime.of(date, LocalTime.of(hour, minute));
+            
             if (dateTime.isBefore(LocalDateTime.now())) {
                 statusLabel.setText("❌ La fecha/hora debe ser futura.");
+                return;
+            }
+
+            // Verificar fondos suficientes en cuenta origen
+            if (currentAccount.getBalance().compareTo(amount) < 0) {
+                statusLabel.setText("❌ Fondos insuficientes en la cuenta origen.");
                 return;
             }
 
@@ -102,10 +121,30 @@ public class ScheduleTransactionDashboardController {
             transactionService.scheduleTransaction(transaction);
             
             transactionService.scheduleTransaction(transaction);
-            statusLabel.setText("✅ Transacción programada correctamente para: " + dateTime);
+            
+            // Actualizar saldos inmediatamente (pre-descuento)
+            currentAccount.setBalance(currentAccount.getBalance().subtract(amount));
+            destinationAccount.setBalance(destinationAccount.getBalance().add(amount));
+            
+            // Persistir cambios en las cuentas
+            accountService.updateAccount(currentAccount);
+            accountService.updateAccount(destinationAccount);
+            
+            // Mostrar confirmación
+            statusLabel.setText(String.format(
+                "✅ Transacción programada: $%.2f para el %s\n" +
+                "Nuevo saldo: $%.2f",
+                amount,
+                dateTime.toString(),
+                currentAccount.getBalance()
+            ));
+            
+            // Limpiar campos y preparar para nueva operación
+            amountField.clear();
+            datePicker.setValue(null);
             
         } catch (Exception e) {
-            statusLabel.setText("❌ Error: " + e.getMessage());
+            statusLabel.setText("❌ Error al programar transacción: " + e.getMessage());
             e.printStackTrace();
         }
     }

@@ -3,6 +3,7 @@ edu\uniquindio\proyectofinal_ds\controller\MainDashboardController.class
 edu\uniquindio\proyectofinal_ds\datastructures\List.class
 edu\uniquindio\proyectofinal_ds\mapper\UserMapperImpl.class
 edu\uniquindio\proyectofinal_ds\model\UserPoints.class
+edu\uniquindio\proyectofinal_ds\datastructures\AVLTree.class
 edu\uniquindio\proyectofinal_ds\datastructures\LinkedList$Node.class
 edu\uniquindio\proyectofinal_ds\dao\UserDAO.class
 edu\uniquindio\proyectofinal_ds\App.class
@@ -42,6 +43,7 @@ edu\uniquindio\proyectofinal_ds\dao\impl\JDBCAccountDAO.class
 edu\uniquindio\proyectofinal_ds\util\Session.class
 edu\uniquindio\proyectofinal_ds\service\TransactionService.class
 edu\uniquindio\proyectofinal_ds\controller\RedeemPointsController.class
+edu\uniquindio\proyectofinal_ds\datastructures\AVLNode.class
 edu\uniquindio\proyectofinal_ds\controller\ScheduleTransactionDashboardController.class
 edu\uniquindio\proyectofinal_ds\util\DatabaseConnection.class
 edu\uniquindio\proyectofinal_ds\util\PropertiesLoader.class
