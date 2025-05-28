@@ -39,6 +39,9 @@ public class AccountManagementController {
     private Button btnGoToWithdraw;
 
     @FXML
+    private Button btnGoToSchedule;  // <-- nuevo botón
+
+    @FXML
     private Label lblAccountId;
 
     @FXML
@@ -50,6 +53,11 @@ public class AccountManagementController {
     @FXML
     void btnBackClicked(ActionEvent event) {
         ViewNavigator.changeView("MainDashboard");
+    }
+
+    @FXML
+    void btnCancelClicked(ActionEvent event) {
+        ViewNavigator.changeView("AccountManagement");
     }
 
     @FXML
@@ -84,6 +92,11 @@ public class AccountManagementController {
     @FXML
     void btnGoToWithdrawClicked(ActionEvent event) {
         ViewNavigator.changeViewWithData("WithdrawDashboard", currentAccount);
+    }
+
+    @FXML
+    void btnGoToScheduleClicked(ActionEvent event) {  // <-- nuevo método
+        ViewNavigator.changeViewWithData("ScheduleTransactionDashboard", currentAccount);
     }
 
     private void loadAccountData() {

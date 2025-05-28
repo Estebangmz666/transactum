@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.paint.Color?>
+
+<VBox xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="edu.uniquindio.proyectofinal_ds.controller.ScheduleTransactionDashboardController"
+      spacing="20" style="-fx-background-color: #f8f9fa;">
+   <children>
+      <BorderPane prefHeight="400.0" prefWidth="600.0">
+         <top>
+            <AnchorPane prefHeight="77.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to right, #2c3e50, #4a5d6e);" BorderPane.alignment="CENTER">
+               <children>
+                  <Text fill="WHITE" layoutX="20.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Programar Transacción">
+                     <font>
+                        <Font name="System Bold" size="28.0" />
+                     </font>
+                     <effect>
+                        <DropShadow color="rgba(0,0,0,0.2)" radius="3.0" spread="0.5" />
+                     </effect>
+                  </Text>
+               </children>
+            </AnchorPane>
+         </top>
+         <center>
+            <VBox spacing="15" alignment="CENTER" style="-fx-padding: 20;">
+               <ComboBox fx:id="cbDestinationAccount" 
+                         style="-fx-background-color: #ffffff; -fx-border-color: #e0e0e0; -fx-border-radius: 4; -fx-background-radius: 4; -fx-padding: 8; -fx-font-size: 14;" 
+                         prefWidth="500.0" prefHeight="35.0"/>
+               
+               <TextField fx:id="amountField" promptText="Monto" 
+                          style="-fx-background-color: #ffffff; -fx-border-color: #e0e0e0; -fx-border-radius: 4; -fx-background-radius: 4; -fx-padding: 8; -fx-font-size: 14;" 
+                          prefWidth="500.0" prefHeight="35.0"/>
+               
+               <DatePicker fx:id="datePicker" 
+                           style="-fx-background-color: #ffffff; -fx-border-color: #e0e0e0; -fx-border-radius: 4; -fx-background-radius: 4; -fx-padding: 5; -fx-font-size: 14;" 
+                           prefWidth="500.0" prefHeight="35.0"/>
+               
+               <HBox spacing="10" alignment="CENTER">
+                  <Label text="Hora:" style="-fx-text-fill: #5a6268; -fx-font-weight: bold;"/>
+                  <Spinner fx:id="hourSpinner" prefWidth="80" 
+                           style="-fx-background-color: #ffffff; -fx-border-color: #e0e0e0; -fx-border-radius: 4; -fx-background-radius: 4;"/>
+                  <Label text="Minuto:" style="-fx-text-fill: #5a6268; -fx-font-weight: bold;"/>
+                  <Spinner fx:id="minuteSpinner" prefWidth="80" 
+                           style="-fx-background-color: #ffffff; -fx-border-color: #e0e0e0; -fx-border-radius: 4; -fx-background-radius: 4;"/>
+               </HBox>
+               
+               <Button fx:id="scheduleButton" text="Programar" onAction="#handleSchedule" 
+                       style="-fx-background-color: #2c3e50; -fx-background-radius: 4; -fx-cursor: hand;" 
+                       textFill="WHITE" prefWidth="200.0" prefHeight="35.0">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+                  <effect>
+                     <DropShadow color="rgba(0,0,0,0.1)" radius="5.0" spread="0.3" />
+                  </effect>
+               </Button>
+               
+               <Button fx:id="cancelButton" text="Cancelar" onAction="#handleCancel" 
+                       style="-fx-background-color: transparent; -fx-border-color: #2c3e50; -fx-border-radius: 4; -fx-cursor: hand;" 
+                       textFill="#2c3e50" prefWidth="200.0" prefHeight="35.0">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Button>
+            </VBox>
+         </center>
+      </BorderPane>
+      <Label fx:id="statusLabel" alignment="CENTER" prefHeight="40.0" prefWidth="600.0" 
+             style="-fx-text-fill: #2c3e50; -fx-font-size: 14; -fx-padding: 10;"/>
+   </children>
+</VBox>
