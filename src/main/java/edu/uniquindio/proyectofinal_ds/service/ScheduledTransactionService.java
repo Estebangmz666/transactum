@@ -17,7 +17,6 @@ public class ScheduledTransactionService {
     // hilo que verifica las transacciones pendientes almacenadas en la cola
 
     private ScheduledTransactionService() {
-        // Verificar transacciones pendientes cada minuto
         executorService.scheduleAtFixedRate(this::checkDueTransactions, 
             0, 1, TimeUnit.MINUTES);
     }
@@ -61,8 +60,6 @@ public class ScheduledTransactionService {
     }
 
     private void removeTransaction(ScheduledTransaction transaction) {
-        // En una implementación con lista enlazada, necesitaríamos un método remove
-        // Como tu PriorityQueue no lo tiene, implementamos una solución alternativa
         PriorityQueueScheduledTransactions newQueue = new PriorityQueueScheduledTransactions();
         ScheduledTransaction current;
         boolean removed = false;
@@ -75,7 +72,6 @@ public class ScheduledTransactionService {
             }
         }
         
-        // Transferir todos los elementos de vuelta a la cola original
         while ((current = newQueue.poll()) != null) {
             scheduledQueue.add(current);
         }
